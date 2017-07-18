@@ -1,6 +1,8 @@
 # ImagePicker
 简易图片浏览器,含图片标题,删除图片功能
 
+![image](https://github.com/turbo1992/ImagePicker/raw/master/ImageBrower.gif)
+
 # PhotoBrower
 PhotoBrower为图片浏览器，TZImagePickerController是从github下载的图片多选demo
 将PhotoBrower文件拷贝至所需项目即可!
