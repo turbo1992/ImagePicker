@@ -34,6 +34,17 @@ typedef enum {
 调用show方法时选择PickerTypeDelete即可！
 
     [show show:self type:PickerTypeDelete isInternet:NO index:0 photoViews:models];
+    
+    #pragma mark - ShowPictureControllerDelegate Delete
+
+通过代理可获取删除后剩余的图片model数组
+- (void)finishWithImages:(NSArray *)images {
+    
+    NSLog(@"images count:------>%ld",images.count);
+
+}
+
+
 
 # 图片加标题展示
 
