@@ -145,14 +145,6 @@
     topBar.barStyle = UIBarStyleBlackTranslucent;
     topBar.alpha = 0.5f;
     
-    UIButton *left = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *image = [UIImage imageNamed:@"resource.Bundle/Images/back_arrow.png"];
-    left.frame = CGRectMake(10, 64-40, 50, 35);
-    left.imageEdgeInsets = UIEdgeInsetsMake((30-image.size.height)*.5, 2, (30-image.size.height)*.5, 50-image.size.width-2);
-    [left setImage:image forState:UIControlStateNormal];
-    [left addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    [topBar addSubview:left];
-    
     if (self.type == PickerTypeDelete) {
         
         UIButton *deleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -329,13 +321,6 @@
         [self reuserAndVisibleHandle:self.currentIndex];
     }
     
-}
-
-- (void)back {
-    if (_delegate && [_delegate respondsToSelector:@selector(finishWithImages:)] && self.type == PickerTypeDelete) {
-        [_delegate finishWithImages:_photoModels];
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (PhotoItemView *)dequeReusablePhotoItemView {
