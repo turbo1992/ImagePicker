@@ -88,8 +88,7 @@
 }
 
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored"-Wunused-variable"
-
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 - (void)viewWillDisappear:(BOOL)animated {
     
@@ -99,7 +98,6 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
-#pragma clang diagnostic pop
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -109,6 +107,8 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
+
+#pragma clang diagnostic pop
 
 - (void)vcPrepare {
     

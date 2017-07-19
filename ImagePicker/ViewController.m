@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TZImagePickerController.h" // 多选相册
+#import "WEImagePickerController.h"
 #import "ShowPictureController.h"   // 图片浏览
 #import "PhotoModel.h"              // 浏览图片model
 #import "UIImageView+WebCache.h"
@@ -15,10 +16,13 @@
 
 static char imageViewAssociation;
 
-@interface ViewController ()<TZImagePickerControllerDelegate,ShowPictureControllerDelegate>
+@interface ViewController ()<TZImagePickerControllerDelegate,PhotoSelectedDelegate,ShowPictureControllerDelegate>
 {
     PhotoModel *imageModel;
 }
+
+@property (nonatomic, strong) NSMutableArray *selectedPhotos;
+
 @end
 
 @implementation ViewController
@@ -77,7 +81,8 @@ static char imageViewAssociation;
 
 #pragma mark - 图片选择
 - (void)imageSelect {
-    
+/*
+    // 谭真: github demo
     TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 columnNumber:3 delegate:self pushPhotoPickerVc:YES];
     imagePickerVc.navigationBar.barTintColor = RGBCOLOR(37, 124, 231);
     imagePickerVc.navigationBar.tintColor = [UIColor whiteColor];
@@ -89,6 +94,16 @@ static char imageViewAssociation;
         
     }];
     [self presentViewController:imagePickerVc animated:YES completion:nil];
+ */
+ 
+    // 525J: framework
+    WEImagePickerController *imagePicker = [[WEImagePickerController alloc]init];
+    imagePicker.columns = 3;
+    imagePicker.itemPadding = 10;
+    imagePicker.maxPhotoCount = 9;
+    imagePicker.selectPhotos = self.selectedPhotos;
+    imagePicker.selectPhotoDelegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
 #pragma mark - 图片浏览
@@ -151,6 +166,22 @@ static char imageViewAssociation;
     [show show:self type:PickerTypeShow isInternet:NO index:0 photoViews:models];
     [[[UIApplication sharedApplication].delegate window].rootViewController presentViewController:show animated:YES completion:nil];
 
+}
+
+#pragma mark - WEImagePickerDelegate
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
+- (void)selectPhotosDidFinish:(NSMutableArray *)photos {
+    
+    self.selectedPhotos = photos;
+    
+    if (photos.count > 0) {
+        ALAsset *asset = [self.selectedPhotos lastObject];
+        UIImageView *imageView = (UIImageView *)[self getAssociation];
+        [imageView setImage:[UIImage imageWithCGImage:asset.aspectRatioThumbnail]];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

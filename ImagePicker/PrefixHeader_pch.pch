@@ -21,5 +21,7 @@
 #define ScreenHeight    [[UIScreen mainScreen] bounds].size.height
 #define ScreenWidth     [[UIScreen mainScreen] bounds].size.width
 #define ScreenBounds	[[UIScreen mainScreen] bounds]
+#define kNavigationBarHeight    64.0f
+#define kTabBarHeight           49.0f
 
 #endif /* PrefixHeader_pch_pch */

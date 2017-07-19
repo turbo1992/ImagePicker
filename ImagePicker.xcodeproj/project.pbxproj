@@ -43,6 +43,9 @@
 		B5EE0D8B1F1DF35D00883B78 /* PhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D831F1DF35D00883B78 /* PhotoProgressView.m */; };
 		B5EE0D8C1F1DF35D00883B78 /* UIImage+ReMake.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D861F1DF35D00883B78 /* UIImage+ReMake.m */; };
 		B5EE0D8D1F1DF35D00883B78 /* UIImageView+SD.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D881F1DF35D00883B78 /* UIImageView+SD.m */; };
+		B5EE0D911F1F37EC00883B78 /* WEAssetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D901F1F37EC00883B78 /* WEAssetHelper.m */; };
+		B5EE0D941F1F38CD00883B78 /* WEImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D931F1F38CD00883B78 /* WEImagePickerController.m */; };
+		B5EE0D971F1F3BDC00883B78 /* WEImgPickerPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D961F1F3BDC00883B78 /* WEImgPickerPhotoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +138,12 @@
 		B5EE0D861F1DF35D00883B78 /* UIImage+ReMake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ReMake.m"; sourceTree = "<group>"; };
 		B5EE0D871F1DF35D00883B78 /* UIImageView+SD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SD.h"; sourceTree = "<group>"; };
 		B5EE0D881F1DF35D00883B78 /* UIImageView+SD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SD.m"; sourceTree = "<group>"; };
+		B5EE0D8F1F1F37EC00883B78 /* WEAssetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEAssetHelper.h; sourceTree = "<group>"; };
+		B5EE0D901F1F37EC00883B78 /* WEAssetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEAssetHelper.m; sourceTree = "<group>"; };
+		B5EE0D921F1F38CD00883B78 /* WEImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEImagePickerController.h; sourceTree = "<group>"; };
+		B5EE0D931F1F38CD00883B78 /* WEImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEImagePickerController.m; sourceTree = "<group>"; };
+		B5EE0D951F1F3BDC00883B78 /* WEImgPickerPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEImgPickerPhotoCell.h; sourceTree = "<group>"; };
+		B5EE0D961F1F3BDC00883B78 /* WEImgPickerPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEImgPickerPhotoCell.m; sourceTree = "<group>"; };
 		CF5502DCC1DCB7C508426B6E /* Pods-ImagePicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImagePicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImagePicker/Pods-ImagePicker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				B5EE0CD81F1C98FD00883B78 /* PhotoBrower */,
+				B5EE0D8E1F1F37BF00883B78 /* WEProImagePicker */,
 				B5EE0CAB1F1C64D300883B78 /* TZImagePickerController */,
 				B5EE0C7B1F1C64B600883B78 /* AppDelegate.h */,
 				B5EE0C7C1F1C64B600883B78 /* AppDelegate.m */,
@@ -337,6 +347,19 @@
 				B5EE0D881F1DF35D00883B78 /* UIImageView+SD.m */,
 			);
 			path = UIImage_Remake;
+			sourceTree = "<group>";
+		};
+		B5EE0D8E1F1F37BF00883B78 /* WEProImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B5EE0D8F1F1F37EC00883B78 /* WEAssetHelper.h */,
+				B5EE0D901F1F37EC00883B78 /* WEAssetHelper.m */,
+				B5EE0D921F1F38CD00883B78 /* WEImagePickerController.h */,
+				B5EE0D931F1F38CD00883B78 /* WEImagePickerController.m */,
+				B5EE0D951F1F3BDC00883B78 /* WEImgPickerPhotoCell.h */,
+				B5EE0D961F1F3BDC00883B78 /* WEImgPickerPhotoCell.m */,
+			);
+			path = WEProImagePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,6 +558,7 @@
 				B5EE0D601F1DF2CE00883B78 /* ImageScrollView.m in Sources */,
 				B5EE0CC91F1C64D300883B78 /* NSBundle+TZImagePicker.m in Sources */,
 				B5EE0D8A1F1DF35D00883B78 /* PhotoLoadingView.m in Sources */,
+				B5EE0D911F1F37EC00883B78 /* WEAssetHelper.m in Sources */,
 				B5EE0CCA1F1C64D300883B78 /* TZAssetCell.m in Sources */,
 				B5EE0C801F1C64B600883B78 /* ViewController.m in Sources */,
 				B5EE0D8B1F1DF35D00883B78 /* PhotoProgressView.m in Sources */,
@@ -542,6 +566,7 @@
 				B5EE0C7D1F1C64B600883B78 /* AppDelegate.m in Sources */,
 				B5EE0CD71F1C64D300883B78 /* UIView+Layout.m in Sources */,
 				B5EE0CD21F1C64D300883B78 /* TZPhotoPickerController.m in Sources */,
+				B5EE0D971F1F3BDC00883B78 /* WEImgPickerPhotoCell.m in Sources */,
 				B5EE0CCC1F1C64D300883B78 /* TZGifPhotoPreviewController.m in Sources */,
 				B5EE0D891F1DF35D00883B78 /* LFRoundProgressView.m in Sources */,
 				B5EE0D651F1DF2CE00883B78 /* PictureView.m in Sources */,
@@ -554,6 +579,7 @@
 				B5EE0CDE1F1D9C1E00883B78 /* ShowPictureController.m in Sources */,
 				B5EE0CD01F1C64D300883B78 /* TZImagePickerController.m in Sources */,
 				B5EE0CD31F1C64D300883B78 /* TZPhotoPreviewCell.m in Sources */,
+				B5EE0D941F1F38CD00883B78 /* WEImagePickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
