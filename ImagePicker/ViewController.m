@@ -80,29 +80,44 @@ static char imageViewAssociation;
 }
 
 #pragma mark - 图片选择
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 - (void)imageSelect {
-/*
+
     // 谭真: github demo
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 columnNumber:3 delegate:self pushPhotoPickerVc:YES];
-    imagePickerVc.navigationBar.barTintColor = RGBCOLOR(37, 124, 231);
-    imagePickerVc.navigationBar.tintColor = [UIColor whiteColor];
-    
-    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-        
-        UIImageView *imageView = (UIImageView *)[self getAssociation];
-        imageView.image = photos[0];
-        
-    }];
-    [self presentViewController:imagePickerVc animated:YES completion:nil];
- */
+//    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 columnNumber:3 delegate:self pushPhotoPickerVc:YES];
+//    imagePickerVc.navigationBar.barTintColor = RGBCOLOR(37, 124, 231);
+//    imagePickerVc.navigationBar.tintColor = [UIColor whiteColor];
+//    
+//    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+//        
+//        UIImageView *imageView = (UIImageView *)[self getAssociation];
+//        imageView.image = photos[0];
+//        
+//    }];
+//    [self presentViewController:imagePickerVc animated:YES completion:nil];
+ 
  
     // 525J: framework
     WEImagePickerController *imagePicker = [[WEImagePickerController alloc]init];
     imagePicker.columns = 3;
-    imagePicker.itemPadding = 10;
+    imagePicker.itemPadding = 1;
     imagePicker.maxPhotoCount = 9;
     imagePicker.selectPhotos = self.selectedPhotos;
-    imagePicker.selectPhotoDelegate = self;
+    imagePicker.delegate = self;
+    
+    [imagePicker setDidFinishPickingPhotosHandle:^(NSMutableArray *assets){
+        
+        self.selectedPhotos = assets;
+        if (assets.count > 0) {
+            ALAsset *asset = [self.selectedPhotos lastObject];
+            UIImageView *imageView = (UIImageView *)[self getAssociation];
+            [imageView setImage:[UIImage imageWithCGImage:asset.aspectRatioThumbnail]];
+        }
+        
+    }];
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
@@ -111,7 +126,7 @@ static char imageViewAssociation;
     
     ShowPictureController *show = [[ShowPictureController alloc] init];
     show.delegate = self;
-    show.imageScaleEnable = YES;
+    show.imageScaleEnable = NO;
     
     NSMutableArray *models = [NSMutableArray array];
     
@@ -134,7 +149,7 @@ static char imageViewAssociation;
         [models addObject:model];
     }
     
-    [show show:self type:PickerTypeDelete isInternet:NO index:0 photoViews:models];
+    [show show:self type:PickerTypeShow isInternet:NO index:0 photoViews:models];
     [[[UIApplication sharedApplication].delegate window].rootViewController presentViewController:show animated:YES completion:nil];
 }
 
@@ -169,14 +184,12 @@ static char imageViewAssociation;
 }
 
 #pragma mark - WEImagePickerDelegate
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
-- (void)selectPhotosDidFinish:(NSMutableArray *)photos {
+- (void)selectPhotosDidFinish:(NSMutableArray *)assets {
     
-    self.selectedPhotos = photos;
+    self.selectedPhotos = assets;
     
-    if (photos.count > 0) {
+    if (assets.count > 0) {
         ALAsset *asset = [self.selectedPhotos lastObject];
         UIImageView *imageView = (UIImageView *)[self getAssociation];
         [imageView setImage:[UIImage imageWithCGImage:asset.aspectRatioThumbnail]];

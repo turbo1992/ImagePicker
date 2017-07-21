@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 
 @interface WEAssetHelper : NSObject
 
@@ -17,9 +18,8 @@
 /**
  *  对ALAssetsLibrary开启单例模式
  */
-+(ALAssetsLibrary *) defaultAssetsLibrary;
++ (ALAssetsLibrary *)defaultAssetsLibrary;
 
 #pragma clang diagnostic pop
-
 
 @end

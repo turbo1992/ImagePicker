@@ -12,11 +12,11 @@
 @protocol PhotoSelectedDelegate<NSObject>
 
 /**
- *  选择图片完成回调
+ *  选择图片完成代理方法回调
  *
- *  @param photos 存的是ALAsset对象 通过ALAsset对象获取image
+ *  @param assets 存的是ALAsset对象 通过ALAsset对象获取image
  */
--(void)selectPhotosDidFinish:(NSMutableArray *)photos;
+-(void)selectPhotosDidFinish:(NSMutableArray *)assets;
 
 @end
 
@@ -42,7 +42,13 @@
  */
 @property (nonatomic, assign) int columns;
 
+/**
+ *  选择图片完成block回调
+ *
+ *  assets 存的是ALAsset对象 通过ALAsset对象获取image
+ */
+@property (nonatomic, copy) void (^didFinishPickingPhotosHandle)(NSMutableArray *assets);
 
-@property (nonatomic,assign) id<PhotoSelectedDelegate> selectPhotoDelegate;
+@property (nonatomic, assign) id <PhotoSelectedDelegate> delegate;
 
 @end

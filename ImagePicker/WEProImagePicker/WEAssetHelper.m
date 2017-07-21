@@ -13,7 +13,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
-+(ALAssetsLibrary *) defaultAssetsLibrary {
++ (ALAssetsLibrary *)defaultAssetsLibrary {
     static dispatch_once_t pred = 0;
     static ALAssetsLibrary *library = nil;
     dispatch_once(&pred,^{
@@ -21,5 +21,7 @@
     });
     return library;
 }
+
+#pragma clang diagnostic pop
 
 @end
