@@ -226,11 +226,18 @@
     if (self.photoModels && self.photoModels.count > 0)
     {
         PhotoModel *model = _photoModels[page];
-        if (model.image_url) {
-            photoItemView.url = model.image_url;
+        
+        if (self.isLocalImage) {//本地图片
+            photoItemView.image = model.image;
+        } else {
+            if (model.image_url) {//网络图片
+                photoItemView.url = model.image_url;
+            }
+            else
+                photoItemView.photoImageView.image = model.fullScreenImage;
         }
-        else
-            photoItemView.photoImageView.image = model.fullScreenImage;
+        
+        
         
         photoItemView.photoModel = model;
     }

@@ -42,6 +42,8 @@
 
 @property (nonatomic, strong) NSString *url;
 
+@property (nonatomic, strong) UIImage *image;
+
 /*
  * 重置
  */

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2725B0268DD6FD8BE5F55D20 /* libPods-ImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F18CEC8C336176ECF397EFE /* libPods-ImagePicker.a */; };
+		B50EFD4C1F219C5400555886 /* StytlePtotoShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50EFD4B1F219C5400555886 /* StytlePtotoShowView.m */; };
 		B5EE0C7A1F1C64B600883B78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0C791F1C64B600883B78 /* main.m */; };
 		B5EE0C7D1F1C64B600883B78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0C7C1F1C64B600883B78 /* AppDelegate.m */; };
 		B5EE0C801F1C64B600883B78 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0C7F1F1C64B600883B78 /* ViewController.m */; };
@@ -68,6 +69,8 @@
 /* Begin PBXFileReference section */
 		477893020F1FB999337CCC71 /* Pods-ImagePicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImagePicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImagePicker/Pods-ImagePicker.debug.xcconfig"; sourceTree = "<group>"; };
 		9F18CEC8C336176ECF397EFE /* libPods-ImagePicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ImagePicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B50EFD4A1F219C5400555886 /* StytlePtotoShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StytlePtotoShowView.h; sourceTree = "<group>"; };
+		B50EFD4B1F219C5400555886 /* StytlePtotoShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StytlePtotoShowView.m; sourceTree = "<group>"; };
 		B5EE0C751F1C64B600883B78 /* ImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EE0C791F1C64B600883B78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5EE0C7B1F1C64B600883B78 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -297,6 +300,8 @@
 		B5EE0CD81F1C98FD00883B78 /* PhotoBrower */ = {
 			isa = PBXGroup;
 			children = (
+				B50EFD4A1F219C5400555886 /* StytlePtotoShowView.h */,
+				B50EFD4B1F219C5400555886 /* StytlePtotoShowView.m */,
 				B5EE0CDC1F1D9C1E00883B78 /* ShowPictureController.h */,
 				B5EE0CDD1F1D9C1E00883B78 /* ShowPictureController.m */,
 				B5EE0D501F1DF2CE00883B78 /* PhotoModel.h */,
@@ -559,6 +564,7 @@
 				B5EE0CC91F1C64D300883B78 /* NSBundle+TZImagePicker.m in Sources */,
 				B5EE0D8A1F1DF35D00883B78 /* PhotoLoadingView.m in Sources */,
 				B5EE0D911F1F37EC00883B78 /* WEAssetHelper.m in Sources */,
+				B50EFD4C1F219C5400555886 /* StytlePtotoShowView.m in Sources */,
 				B5EE0CCA1F1C64D300883B78 /* TZAssetCell.m in Sources */,
 				B5EE0C801F1C64B600883B78 /* ViewController.m in Sources */,
 				B5EE0D8B1F1DF35D00883B78 /* PhotoProgressView.m in Sources */,

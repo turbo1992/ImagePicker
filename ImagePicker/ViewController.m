@@ -7,10 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "TZImagePickerController.h" // 多选相册
-#import "WEImagePickerController.h"
+#import "TZImagePickerController.h" // 多选相册1
+#import "WEImagePickerController.h" // 多选相册2
 #import "ShowPictureController.h"   // 图片浏览
-#import "PhotoModel.h"              // 浏览图片model
+#import "StytlePtotoShowView.h"     // 小图滑动展示
+#import "PhotoModel.h"
 #import "UIImageView+WebCache.h"
 #import <objc/runtime.h>
 
@@ -18,7 +19,8 @@ static char imageViewAssociation;
 
 @interface ViewController ()<TZImagePickerControllerDelegate,PhotoSelectedDelegate,ShowPictureControllerDelegate>
 {
-    PhotoModel *imageModel;
+    NSArray *_photoImages;
+    StytlePtotoShowView *_showView;
 }
 
 @property (nonatomic, strong) NSMutableArray *selectedPhotos;
@@ -40,7 +42,7 @@ static char imageViewAssociation;
     
     // 图片选择
     UIButton *imageSelect = [UIButton buttonWithType:UIButtonTypeCustom];
-    imageSelect.frame = CGRectMake(30, 100, ScreenWidth - 60, 55);
+    imageSelect.frame = CGRectMake(30, 85, ScreenWidth - 60, 35);
     [imageSelect setTitle:@"图片选择" forState:UIControlStateNormal];
     imageSelect.backgroundColor = RGBCOLOR(37, 124, 231);
     imageSelect.titleLabel.font = [UIFont boldSystemFontOfSize:18];
@@ -50,7 +52,7 @@ static char imageViewAssociation;
     
     // 图片浏览
     UIButton *imageBrower = [UIButton buttonWithType:UIButtonTypeCustom];
-    imageBrower.frame = CGRectMake(30, 185, ScreenWidth - 60, 55);
+    imageBrower.frame = CGRectMake(30, 135, ScreenWidth - 60, 35);
     [imageBrower setTitle:@"图片浏览" forState:UIControlStateNormal];
     imageBrower.backgroundColor = RGBCOLOR(37, 124, 231);
     imageBrower.titleLabel.font = [UIFont boldSystemFontOfSize:18];
@@ -59,23 +61,21 @@ static char imageViewAssociation;
     
     
     // 图片展示
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70, 290, ScreenWidth-140, ScreenWidth-140)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70, 190, ScreenWidth-140, ScreenWidth-140)];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.layer.masksToBounds = YES;
     imageView.image = DefaultImage;
     [self addAssion:imageView];
     [self.view addSubview:imageView];
     
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGesture)];
     [imageView addGestureRecognizer:singleTap];
     
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame)+30, ScreenWidth, 20)];
-    label.text = @"展示删除图片后的第一张图,点击图片查看";
-    label.font = [UIFont systemFontOfSize:15];
-    label.textColor = [UIColor grayColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:label];
+    // 图片浏览展示
+    _showView = [[StytlePtotoShowView alloc] initWithFrame:CGRectMake(0, 450, ScreenWidth, 200)];
+    _showView.showType = StytleSingleType;
+    [self.view addSubview:_showView];
     
 }
 
@@ -103,8 +103,8 @@ static char imageViewAssociation;
     // 525J: framework
     WEImagePickerController *imagePicker = [[WEImagePickerController alloc]init];
     imagePicker.columns = 3;
-    imagePicker.itemPadding = 1;
-    imagePicker.maxPhotoCount = 9;
+    imagePicker.itemPadding = 10;
+    imagePicker.maxPhotoCount = 15;
     imagePicker.selectPhotos = self.selectedPhotos;
     imagePicker.delegate = self;
     
@@ -112,7 +112,7 @@ static char imageViewAssociation;
         
         self.selectedPhotos = assets;
         if (assets.count > 0) {
-            ALAsset *asset = [self.selectedPhotos lastObject];
+            ALAsset *asset = self.selectedPhotos[0];
             UIImageView *imageView = (UIImageView *)[self getAssociation];
             [imageView setImage:[UIImage imageWithCGImage:asset.aspectRatioThumbnail]];
         }
@@ -153,34 +153,30 @@ static char imageViewAssociation;
     [[[UIApplication sharedApplication].delegate window].rootViewController presentViewController:show animated:YES completion:nil];
 }
 
-#pragma mark - ShowPictureControllerDelegate Delete
-
-- (void)finishWithImages:(NSArray *)images {
-    
-    NSLog(@"images count:------>%ld",images.count);
-    
-    if (images.count > 0) {
-        imageModel = images[0];
-        UIImageView *imageView = (UIImageView *)[self getAssociation];
-        imageView.userInteractionEnabled = YES;
-        [imageView sd_setImageWithURL:[NSURL URLWithString:imageModel.image_url] placeholderImage:DefaultImage];
-    }
-
-}
-
-#pragma mark - 查看单图
-- (void)singleTap {
+- (void)singleTapGesture {
     
     ShowPictureController *show = [[ShowPictureController alloc] init];
     show.delegate = self;
+    show.isLocalImage = YES;
     
     NSMutableArray *models = [NSMutableArray array];
     
-    [models addObject:imageModel];
+    [_photoImages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        PhotoModel *model = [[PhotoModel alloc] init];
+        model.image = _photoImages[idx];
+        [models addObject:model];
+        
+    }];
     
     [show show:self type:PickerTypeShow isInternet:NO index:0 photoViews:models];
     [[[UIApplication sharedApplication].delegate window].rootViewController presentViewController:show animated:YES completion:nil];
+}
 
+#pragma mark - ShowPictureControllerDelegate Delete
+
+- (void)finishWithImages:(NSArray *)images {
+    NSLog(@"images count:------>%ld",images.count);
 }
 
 #pragma mark - WEImagePickerDelegate
@@ -189,12 +185,32 @@ static char imageViewAssociation;
     
     self.selectedPhotos = assets;
     
+    NSArray *photos = [self assetsToImages:assets];
+    [_showView showInView:self.view photos:photos];
+    
+    UIImageView *imageView = (UIImageView *)[self getAssociation];
+    imageView.userInteractionEnabled = YES;
+    _photoImages = photos;
+    
+}
+
+- (NSArray *)assetsToImages:(NSArray *)assets {
+    
     if (assets.count > 0) {
-        ALAsset *asset = [self.selectedPhotos lastObject];
+        ALAsset *asset = self.selectedPhotos[0];
         UIImageView *imageView = (UIImageView *)[self getAssociation];
         [imageView setImage:[UIImage imageWithCGImage:asset.aspectRatioThumbnail]];
     }
     
+    NSMutableArray *photos = [NSMutableArray array];
+    [assets enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        ALAsset *asset = (ALAsset *)obj;
+        [photos addObject:[UIImage imageWithCGImage:asset.aspectRatioThumbnail]];
+        
+    }];
+
+    return photos;
 }
 
 - (void)didReceiveMemoryWarning {

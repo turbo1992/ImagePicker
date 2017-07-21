@@ -17,6 +17,9 @@
 /** 网络图片地址 */
 @property (nonatomic, copy) NSString *image_url;
 
+/** 本地图片 */
+@property (nonatomic, copy) UIImage *image;
+
 /** 高清图地址 */
 @property (nonatomic, copy) NSString *image_HD;
 

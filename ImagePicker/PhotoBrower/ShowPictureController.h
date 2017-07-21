@@ -37,6 +37,11 @@ typedef enum {
 @property (nonatomic, assign) BOOL imageScaleEnable;
 
 /**
+ *  是否为本地图片
+ */
+@property (nonatomic, assign) BOOL isLocalImage;
+
+/**
  *  展示图片浏览
  *
  *  @param handleVC     传入控制器

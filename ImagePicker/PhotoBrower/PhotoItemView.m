@@ -89,7 +89,14 @@
 {
     _url = url;
     
-    [self loadImage:_url];
+    [self loadImageUrl:_url];
+}
+
+- (void)setImage:(UIImage *)image
+{
+    _image = image;
+    
+    [self loadImage:image];
 }
 
 - (BOOL)isExits
@@ -99,7 +106,7 @@
     return [imageCache diskImageExistsWithKey:self.url];
 }
 
-- (void)loadImage:(NSString *)url
+- (void)loadImageUrl:(NSString *)url
 {
     __weak typeof(self) weakSelf = self;
     
@@ -169,6 +176,33 @@
     if ([self isExits]) {
         
     }
+}
+
+- (void)loadImage:(UIImage *)image {
+    
+    if (image != nil) {
+        
+        self.photoImageView.image = image;
+        
+        self.scrollView.contentSize = self.photoImageView.frame.size;
+        
+        self.photoImageView.frame = self.photoImageView.calF;
+        
+        
+        self.userInteractionEnabled = YES;
+        
+        
+    } else {
+        
+        self.photoImageView.image = DefaultImage;
+        
+        self.scrollView.contentSize = self.photoImageView.frame.size;
+        
+        self.photoImageView.frame = self.photoImageView.calF;
+        
+        self.userInteractionEnabled = YES;
+    }
+
 }
 
 #pragma mark - UIScrollView Delegate Method
