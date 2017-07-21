@@ -73,7 +73,7 @@ static char imageViewAssociation;
     
     
     // 图片浏览展示
-    _showView = [[StytlePtotoShowView alloc] initWithFrame:CGRectMake(0, 450, ScreenWidth, 200)];
+    _showView = [[StytlePtotoShowView alloc] initWithFrame:CGRectMake(0, 480, ScreenWidth, 200)];
     _showView.showType = StytleSingleType;
     [self.view addSubview:_showView];
     
