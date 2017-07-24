@@ -11,7 +11,7 @@
 
 static NSString *cellIdentifier = @"WEImgPickerPhotoCell";
 
-@interface WEImagePickerController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface WEImagePickerController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 
 /* 照片数组,存放的是ALAsset */
 @property (nonatomic, strong) NSMutableArray *photos;
@@ -36,29 +36,44 @@ static NSString *cellIdentifier = @"WEImgPickerPhotoCell";
     
     self.view .backgroundColor = [UIColor whiteColor];
     
-    if (self.itemPadding == 0) {
-        self.itemPadding = 10.f;
-    }
-    
-    if (self.columns == 0) {
-        self.columns = 3;
-    }
-    
-    self.photos = [[NSMutableArray alloc]init];
+    if (self.maxPhotoCount == 1) {
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            picker.allowsEditing = NO;
+            picker.delegate = self;
+            [[[UIApplication sharedApplication].delegate window].rootViewController presentViewController:picker animated:YES completion:nil];
+        }
 
-    // 布局subviews
-    [self initSubviews];
+    } else {
+        
+        if (self.itemPadding == 0) {
+            self.itemPadding = 10.f;
+        }
+        
+        if (self.columns == 0) {
+            self.columns = 3;
+        }
+        
+        self.photos = [[NSMutableArray alloc]init];
+        
+        // 布局subviews
+        [self initSubviews];
+        
+        // 计算已选图片
+        [self calPhotos];
+        
+        // 刷新手机相册
+        [self setSelectedPic];
+        
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            //NSMutableArray *arr = [self getAllPhoto];
+            //NSLog(@"完成%@ \n照片总数%ld", arr, arr.count);
+        });
+
+    }
     
-    // 计算已选图片
-    [self calPhotos];
-    
-    // 刷新手机相册
-    [self setSelectedPic];
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSMutableArray *arr = [self getAllPhoto];
-        //NSLog(@"完成%@ \n照片总数%ld", arr, arr.count);
-    });
 }
 
 - (void)initSubviews {
@@ -123,6 +138,8 @@ static NSString *cellIdentifier = @"WEImgPickerPhotoCell";
     if (album != nil) {
         [album setAssetsFilter:[ALAssetsFilter allPhotos]];
         [self.photos removeAllObjects];
+        [self.photos addObject:@""];
+
         [album enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
             if (result) {
                 [self.photos addObject:result];
@@ -141,88 +158,114 @@ static NSString *cellIdentifier = @"WEImgPickerPhotoCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    WEImgPickerPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    ALAsset *asset=self.photos[indexPath.row];
-    //    UIImage *thumbnail =  [UIImage imageWithCGImage:asset.thumbnail];
-    [cell.photoImageView setImage:[UIImage imageWithCGImage:asset.aspectRatioThumbnail]];
-    cell.photoImageView.contentMode = UIViewContentModeScaleAspectFill;
-    //    __weak typeof(self) weakself = self;
-    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-    //        //裁切
-    //        UIImage *image = [[UIImage imageWithCGImage:thumbnail] imageCroppedToFitSize:(CGSize){150,150}];
-    //        dispatch_async(dispatch_get_main_queue(), ^{
-    //            //完成，设置到view
-    //            [cell.photoImageView setImage:image];
-    //
-    ////            [cell.photoImageView setImage:thumbnail];
-    //
-    //        });
-    //    });
     
-    NSString *url=[asset valueForProperty:ALAssetPropertyAssetURL];
-    if ([_selectPhotoNames indexOfObject:url]==NSNotFound) {
-        cell.selectImageView.image = [UIImage imageNamed:@"unselectedPic"];
+    WEImgPickerPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.selectImageView.hidden = YES;
+
+    if (indexPath.row == 0) {
+        [cell.photoImageView setImage:[UIImage imageNamed:@"takePicture"]];
     } else {
-        cell.selectImageView.image = [UIImage imageNamed:@"selectedPic"];
-        [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-        cell.selected = YES;
+        
+        ALAsset *asset=self.photos[indexPath.row];
+        UIImage *image =  [UIImage imageWithCGImage:asset.aspectRatioThumbnail];;
+        [cell.photoImageView setImage:image];
+
+        NSString *url=[asset valueForProperty:ALAssetPropertyAssetURL];
+        if ([_selectPhotoNames indexOfObject:url]==NSNotFound) {
+            cell.selectImageView.image = [UIImage imageNamed:@"unselectedPic"];
+        } else {
+            cell.selectImageView.image = [UIImage imageNamed:@"selectedPic"];
+            [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+            cell.selected = YES;
+        }
+        cell.selectImageView.hidden = NO;
     }
+    
     return cell;
 }
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    WEImgPickerPhotoCell *cell=(WEImgPickerPhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    if (self.selectPhotos.count >= self.maxPhotoCount) {
+    if (indexPath.row == 0) {
         [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-        return;
-    }
-    
-    cell.selectImageView.image = [UIImage imageNamed:@"selectedPic"];
-    ALAsset *asset=self.photos[indexPath.row];
-    [self.selectPhotos addObject:asset];
-    [_selectPhotoNames addObject:[asset valueForProperty:ALAssetPropertyAssetURL]];
-    
-    if(self.selectPhotos.count==0)
-    {
-        self.photoCountLab.text=@"请选择照片";
-    }else
-    {
-        self.photoCountLab.text=[NSString stringWithFormat:@"已经选择 %lu 张照片",(unsigned long)self.selectPhotos.count];
+
+        NSLog(@"拍照!");
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.allowsEditing = NO;
+            picker.delegate = self;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:picker animated:YES completion:nil];
+        }
+
+    } else {
+        WEImgPickerPhotoCell *cell=(WEImgPickerPhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        if (self.selectPhotos.count >= self.maxPhotoCount) {
+            [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+            return;
+        }
+        
+        cell.selectImageView.image = [UIImage imageNamed:@"selectedPic"];
+        ALAsset *asset=self.photos[indexPath.row];
+        [self.selectPhotos addObject:asset];
+        [_selectPhotoNames addObject:[asset valueForProperty:ALAssetPropertyAssetURL]];
+        
+        if(self.selectPhotos.count==0)
+        {
+            self.photoCountLab.text=@"请选择照片";
+        }else
+        {
+            self.photoCountLab.text=[NSString stringWithFormat:@"已经选择 %lu 张照片",(unsigned long)self.selectPhotos.count];
+        }
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    WEImgPickerPhotoCell *cell=(WEImgPickerPhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.selectImageView.image = [UIImage imageNamed:@"unselectedPic"];
-    ALAsset *asset=self.photos[indexPath.row];
-    for (ALAsset *a in self.selectPhotos) {
-        NSString *str1=[asset valueForProperty:ALAssetPropertyAssetURL];
-        NSString *str2=[a valueForProperty:ALAssetPropertyAssetURL];
-        if([str1 isEqual:str2])
+    if (indexPath.row > 0) {
+        WEImgPickerPhotoCell *cell=(WEImgPickerPhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        cell.selectImageView.image = [UIImage imageNamed:@"unselectedPic"];
+        ALAsset *asset=self.photos[indexPath.row];
+        for (ALAsset *a in self.selectPhotos) {
+            NSString *str1=[asset valueForProperty:ALAssetPropertyAssetURL];
+            NSString *str2=[a valueForProperty:ALAssetPropertyAssetURL];
+            if([str1 isEqual:str2])
+            {
+                [self.selectPhotos removeObject:a];
+                break;
+            }
+        }
+        
+        [_selectPhotoNames removeObject:[asset valueForProperty:ALAssetPropertyAssetURL]];
+        if(self.selectPhotos.count==0)
         {
-            [self.selectPhotos removeObject:a];
-            break;
+            self.photoCountLab.text=@"请选择照片";
+        }
+        else{
+            
+            self.photoCountLab.text=[NSString stringWithFormat:@"已经选择 %lu 张照片",(unsigned long)self.selectPhotos.count];
         }
     }
-    
-    [_selectPhotoNames removeObject:[asset valueForProperty:ALAssetPropertyAssetURL]];
-    if(self.selectPhotos.count==0)
-    {
-        self.photoCountLab.text=@"请选择照片";
-    }
-    else{
-        
-        self.photoCountLab.text=[NSString stringWithFormat:@"已经选择 %lu 张照片",(unsigned long)self.selectPhotos.count];
-    }
-    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat w = (CGRectGetWidth(collectionView.frame) - 2 * _itemPadding - _itemPadding * (_columns - 1))/_columns;
     return CGSizeMake(w, w);
+}
+
+#pragma mark - UIImagePickerController delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //获取照片的原图
+    UIImage* original = [info objectForKey:UIImagePickerControllerOriginalImage];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cameraPhotosDidFinish:)]) {
+        [self.delegate cameraPhotosDidFinish:original];
+    }
+    [picker dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
+
 }
 
 

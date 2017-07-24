@@ -73,8 +73,9 @@ static char imageViewAssociation;
     
     
     // 图片浏览展示
-    _showView = [[StytlePtotoShowView alloc] initWithFrame:CGRectMake(0, 480, ScreenWidth, 200)];
+    _showView = [[StytlePtotoShowView alloc] initWithFrame:CGRectMake(0, 450, ScreenWidth, 200)];
     _showView.showType = StytleSingleType;
+    _showView.columns = 4;
     [self.view addSubview:_showView];
     
 }
@@ -104,7 +105,7 @@ static char imageViewAssociation;
     WEImagePickerController *imagePicker = [[WEImagePickerController alloc]init];
     imagePicker.columns = 3;
     imagePicker.itemPadding = 10;
-    imagePicker.maxPhotoCount = 15;
+    imagePicker.maxPhotoCount = 10;
     imagePicker.selectPhotos = self.selectedPhotos;
     imagePicker.delegate = self;
     
@@ -126,7 +127,8 @@ static char imageViewAssociation;
     
     ShowPictureController *show = [[ShowPictureController alloc] init];
     show.delegate = self;
-    show.imageScaleEnable = NO;
+    show.imageScaleEnable = YES;
+    show.textAligent = TextAlignmentBottom;
     
     NSMutableArray *models = [NSMutableArray array];
     
@@ -212,6 +214,18 @@ static char imageViewAssociation;
 
     return photos;
 }
+
+-(void)cameraPhotosDidFinish:(UIImage *)image {
+    
+    NSMutableArray *photos = [_photoImages mutableCopy];
+    [photos insertObject:image atIndex:0];
+    _photoImages = [photos mutableCopy];
+    [_showView showInView:self.view photos:photos];
+
+    UIImageView *imageView = (UIImageView *)[self getAssociation];
+    [imageView setImage:image];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

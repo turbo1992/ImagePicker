@@ -170,6 +170,9 @@
     
     CGFloat x = 10.f;
     CGFloat y = ScreenWidth+(ScreenHeight-ScreenWidth)/2+10.f;
+    if (self.textAligent == TextAlignmentTop) {
+        y = 64.0f;
+    }
     CGFloat width = ScreenWidth-20.f;
     CGFloat height = 20;
     titleLabel.frame = CGRectMake(x, y, width, height);

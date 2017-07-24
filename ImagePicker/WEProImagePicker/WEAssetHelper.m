@@ -18,6 +18,14 @@
     static ALAssetsLibrary *library = nil;
     dispatch_once(&pred,^{
         library = [[ALAssetsLibrary alloc] init];
+        
+        [library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+            
+            //NSLog(@"ALAssetsGroupPropertyName:%@",[group valueForProperty:ALAssetsGroupPropertyName]);
+        } failureBlock:^(NSError *error) {
+            
+        }];
+
     });
     return library;
 }

@@ -71,6 +71,7 @@
 		9F18CEC8C336176ECF397EFE /* libPods-ImagePicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ImagePicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50EFD4A1F219C5400555886 /* StytlePtotoShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StytlePtotoShowView.h; sourceTree = "<group>"; };
 		B50EFD4B1F219C5400555886 /* StytlePtotoShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StytlePtotoShowView.m; sourceTree = "<group>"; };
+		B50EFD4E1F21F09000555886 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B5EE0C751F1C64B600883B78 /* ImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EE0C791F1C64B600883B78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5EE0C7B1F1C64B600883B78 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 		A577B7A808ECC9D885DFFCA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B50EFD4E1F21F09000555886 /* MobileCoreServices.framework */,
 				9F18CEC8C336176ECF397EFE /* libPods-ImagePicker.a */,
 			);
 			name = Frameworks;
@@ -300,8 +302,6 @@
 		B5EE0CD81F1C98FD00883B78 /* PhotoBrower */ = {
 			isa = PBXGroup;
 			children = (
-				B50EFD4A1F219C5400555886 /* StytlePtotoShowView.h */,
-				B50EFD4B1F219C5400555886 /* StytlePtotoShowView.m */,
 				B5EE0CDC1F1D9C1E00883B78 /* ShowPictureController.h */,
 				B5EE0CDD1F1D9C1E00883B78 /* ShowPictureController.m */,
 				B5EE0D501F1DF2CE00883B78 /* PhotoModel.h */,
@@ -316,6 +316,8 @@
 				B5EE0D531F1DF2CE00883B78 /* PictureView.m */,
 				B5EE0D4A1F1DF2CE00883B78 /* PBGView.h */,
 				B5EE0D4B1F1DF2CE00883B78 /* PBGView.m */,
+				B50EFD4A1F219C5400555886 /* StytlePtotoShowView.h */,
+				B50EFD4B1F219C5400555886 /* StytlePtotoShowView.m */,
 				B5EE0D7C1F1DF35D00883B78 /* Category */,
 			);
 			path = PhotoBrower;

@@ -18,6 +18,9 @@
  */
 -(void)selectPhotosDidFinish:(NSMutableArray *)assets;
 
+@optional
+-(void)cameraPhotosDidFinish:(UIImage *)image;
+
 @end
 
 @interface WEImagePickerController : UIViewController

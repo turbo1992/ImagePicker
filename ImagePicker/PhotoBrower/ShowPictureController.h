@@ -14,6 +14,11 @@ typedef enum {
     PickerTypeDelete// 删除
 } PickerShowType;
 
+typedef enum {
+    TextAlignmentBottom,// 文字底部布局
+    TextAlignmentTop    // 文字顶部布局
+} TextAligentType;
+
 @protocol ShowPictureControllerDelegate <NSObject>
 
 @optional
@@ -40,6 +45,11 @@ typedef enum {
  *  是否为本地图片
  */
 @property (nonatomic, assign) BOOL isLocalImage;
+
+/**
+ *  文字布局样式
+ */
+@property (nonatomic, assign) TextAligentType textAligent;
 
 /**
  *  展示图片浏览
