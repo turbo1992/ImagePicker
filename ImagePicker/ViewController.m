@@ -7,8 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "TZImagePickerController.h" // 多选相册1
-#import "WEImagePickerController.h" // 多选相册2
+#import "WEPhotoLibrayController.h" // 多选相册
 #import "ShowPictureController.h"   // 图片浏览
 #import "StytlePtotoShowView.h"     // 小图滑动展示
 #import "PhotoModel.h"
@@ -17,10 +16,10 @@
 
 static char imageViewAssociation;
 
-@interface ViewController ()<TZImagePickerControllerDelegate,PhotoSelectedDelegate,ShowPictureControllerDelegate>
+@interface ViewController ()<ShowPictureControllerDelegate>
 {
-    NSArray *_photoImages;
-    StytlePtotoShowView *_showView;
+    NSArray *_photoImages; // 图片数组
+    StytlePtotoShowView *_showView; // 单行展示、九宫格展示View
 }
 
 @property (nonatomic, strong) NSMutableArray *selectedPhotos;
@@ -73,7 +72,7 @@ static char imageViewAssociation;
     
     
     // 图片浏览展示
-    _showView = [[StytlePtotoShowView alloc] initWithFrame:CGRectMake(0, 450, ScreenWidth, 200)];
+    _showView = [[StytlePtotoShowView alloc] initWithFrame:CGRectMake(0, 470, ScreenWidth, 200)];
     _showView.showType = StytleSingleType;
     _showView.columns = 4;
     [self.view addSubview:_showView];
@@ -86,40 +85,49 @@ static char imageViewAssociation;
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 - (void)imageSelect {
-
-    // 谭真: github demo
-//    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 columnNumber:3 delegate:self pushPhotoPickerVc:YES];
-//    imagePickerVc.navigationBar.barTintColor = RGBCOLOR(37, 124, 231);
-//    imagePickerVc.navigationBar.tintColor = [UIColor whiteColor];
-//    
-//    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-//        
-//        UIImageView *imageView = (UIImageView *)[self getAssociation];
-//        imageView.image = photos[0];
-//        
-//    }];
-//    [self presentViewController:imagePickerVc animated:YES completion:nil];
- 
  
     // 525J: framework
-    WEImagePickerController *imagePicker = [[WEImagePickerController alloc]init];
-    imagePicker.columns = 3;
-    imagePicker.itemPadding = 10;
-    imagePicker.maxPhotoCount = 10;
-    imagePicker.selectPhotos = self.selectedPhotos;
-    imagePicker.delegate = self;
+//    WEImagePickerController *imagePicker = [[WEImagePickerController alloc]init];
+//    imagePicker.columns = 3;
+//    imagePicker.itemPadding = 10;
+//    imagePicker.maxPhotoCount = 10;
+//    imagePicker.selectPhotos = self.selectedPhotos;
+//    imagePicker.delegate = self;
+//    
+//    [imagePicker setDidFinishPickingPhotosHandle:^(NSMutableArray *assets){
+//        
+//        self.selectedPhotos = assets;
+//        if (assets.count > 0) {
+//            ALAsset *asset = self.selectedPhotos[0];
+//            UIImageView *imageView = (UIImageView *)[self getAssociation];
+//            [imageView setImage:[UIImage imageWithCGImage:asset.aspectRatioThumbnail]];
+//        }
+//        
+//    }];
+//    [self presentViewController:imagePicker animated:YES completion:nil];
     
-    [imagePicker setDidFinishPickingPhotosHandle:^(NSMutableArray *assets){
+//    __weak typeof (self)weakSelf = self;
+    
+    // 多选相册
+    WEPhotoLibrayController *photoSelector = [WEPhotoLibrayController photoLibrayControllerWithBlock:^(NSArray *images) {
         
-        self.selectedPhotos = assets;
-        if (assets.count > 0) {
-            ALAsset *asset = self.selectedPhotos[0];
-            UIImageView *imageView = (UIImageView *)[self getAssociation];
-            [imageView setImage:[UIImage imageWithCGImage:asset.aspectRatioThumbnail]];
-        }
+        NSLog(@"images count:------>%ld",images.count);
+        
+        [_showView showInView:self.view photos:images];
+        
+        UIImageView *imageView = (UIImageView *)[self getAssociation];
+        imageView.userInteractionEnabled = YES;
+        imageView.image = [images firstObject];
+        _photoImages = images;
         
     }];
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    photoSelector.multiAlbumSelect = NO;
+    photoSelector.navigationBar.barTintColor = RGBCOLOR(37, 124, 231);
+    photoSelector.navigationBar.tintColor = [UIColor whiteColor];
+    [photoSelector.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    photoSelector.maxCount = 10;
+    photoSelector.multiAlbumSelect = YES;
+    [self presentViewController:photoSelector animated:YES completion:nil];
 }
 
 #pragma mark - 图片浏览
