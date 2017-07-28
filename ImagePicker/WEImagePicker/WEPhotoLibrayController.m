@@ -7,18 +7,18 @@
 //
 
 #import "WEPhotoLibrayController.h"
-#import "WEPhotoGroupTableViewController.h"
+#import "WEPhotoGroupTableViewController.h" // 相册组列表
 
 @interface WEPhotoLibrayController ()
 
 /* 数据回调 */
-@property (nonatomic, copy) WEImagePicker_ArrayBlock block;
+@property(nonatomic, copy) WEImagePicker_ArrayBlock block;
 /* 相册组展示列表 */
 @property(nonatomic, strong) WEPhotoGroupTableViewController *photoGroupTableViewController;
 /* ALAsset资源 */
 @property(nonatomic, strong) ALAssetsLibrary *library;
 /* PhotoKit资源 */
-@property (nonatomic, strong) PHImageRequestOptions *imageOptions;
+@property(nonatomic, strong) PHImageRequestOptions *imageOptions;
 /* 相册组array */
 @property(nonatomic, strong) NSMutableArray *photoGroupArray;
 
@@ -40,6 +40,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.navigationBar.barTintColor = PickerMainColor;
+    self.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
     // 创建相册
     [self setUpImagePickerController];
 }
@@ -55,19 +59,21 @@
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
             
             if (status != PHAuthorizationStatusAuthorized) {
-                
+                // 用户未开启相册权限提示
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.photoGroupTableViewController showErrorMessageView];
                 });
                 
             }else {
                 
+                // 获取相册资源
                 PHFetchResult *collections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
                 [collections enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
                     // 序列化相册组Group模型
                     [weakSelf photoGroupWithCollection:collection];
                 }];
                 
+                // 为防止获取资源为nil,再次获取相册资源(系统bug)
                 collections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
                 [collections enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
                     if (collection.assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumUserLibrary) {
@@ -87,12 +93,14 @@
             
             ALAssetsLibraryAccessFailureBlock failureblock = ^(NSError *error) {
                 if (error != nil) {
+                    // 用户未开启相册权限提示
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [weakSelf.photoGroupTableViewController showErrorMessageView];
                     });
                 }
             };
             
+            // 遍历所有相册资源,序列化相册组模型
             [weakSelf.library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *aLAssets, BOOL* stop){
                 
                 if (aLAssets != nil) {
@@ -104,7 +112,7 @@
                     photoGroup.groupIcon = posterImage;
                     [weakSelf.photoGroupArray addObject:photoGroup];
                     
-                    // 序列化Group模型
+                    // 遍历该相册组资源,序列化相册图片模型
                     [aLAssets enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop){
                         
                         if (result != NULL) {

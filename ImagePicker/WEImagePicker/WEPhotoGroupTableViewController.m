@@ -7,12 +7,12 @@
 //
 
 #import "WEPhotoGroupTableViewController.h"
-#import "WEPhotoGroupDetailController.h"
+#import "WEPhotoGroupDetailController.h" // 相册详情
 
 @interface WEPhotoGroupTableViewController ()
 
-/* 相簿无照片提示 */
-@property(nonatomic,   weak) UIView *errorMessageView;
+/* 无法获取访问相册权限提示 */
+@property(nonatomic, weak) UIView *errorMessageView;
 /* 相册详情 */
 @property(nonatomic, strong) WEPhotoGroupDetailController *photoGroupDetailController;
 
@@ -30,6 +30,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelBtnDidClick)];
 }
 
+// 取消
 - (void)cancelBtnDidClick {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -52,6 +53,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    // 相册组列表cell
     WEPhotoGroupCell *cell = [WEPhotoGroupCell cellWithTableView:tableView];
     WEPhotoGroup *photoGroup = self.photoGroupArray[indexPath.section];
     if (photoGroup.photoALAssets.count == 0) {
@@ -64,15 +66,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return WEImagePicker_Item_Height;
+    CGFloat height = WEImagePicker_Item_Height;
+    return height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    // 相册组列表资源
     WEPhotoGroup *photoGroup = self.photoGroupArray[indexPath.section];
     
     if (photoGroup.photoALAssets.count == 0) return;
     
+    // 相册详情
     WEPhotoGroupDetailController *photoGroupDetailController;
     
     if (!self.canMultiAlbumSelect) {
@@ -95,13 +100,14 @@
         }
         photoGroupDetailController = _photoGroupDetailController;
     }
+    
+    // 相册详情资源
     photoGroupDetailController.photoALAssets = photoGroup.photoALAssets;
     photoGroupDetailController.groupName = photoGroup.groupName;
     [self.navigationController pushViewController:photoGroupDetailController animated:YES];
 }
 
-#pragma mark - 相簿无照片展示
-
+// 无法获取访问相册权限提示
 - (void)showErrorMessageView {
     self.errorMessageView.hidden = NO;
 }
@@ -157,29 +163,27 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setSubView];
+        
+        // 相册封面
+        UIImageView *iconView = [[UIImageView alloc]init];
+        iconView.contentMode = UIViewContentModeScaleAspectFill;
+        iconView.layer.masksToBounds = YES;
+        iconView.backgroundColor = [UIColor clearColor];
+        self.iconView = iconView;
+        [self addSubview:iconView];
+        
+        // 相册信息
+        UILabel *infoLabel = [[UILabel alloc]init];
+        infoLabel.textAlignment = NSTextAlignmentLeft;
+        infoLabel.font = [UIFont systemFontOfSize:16];
+        self.infoLabel = infoLabel;
+        [self addSubview:infoLabel];
+        
     }
     return self;
 }
 
-- (void)setSubView {
-    
-    // 相册封面
-    UIImageView *iconView = [[UIImageView alloc]init];
-    iconView.contentMode = UIViewContentModeScaleAspectFill;
-    iconView.layer.masksToBounds = YES;
-    iconView.backgroundColor = [UIColor clearColor];
-    self.iconView = iconView;
-    [self addSubview:iconView];
-    
-    // 相册信息
-    UILabel *infoLabel = [[UILabel alloc]init];
-    infoLabel.textAlignment = NSTextAlignmentLeft;
-    infoLabel.font = [UIFont systemFontOfSize:16];
-    self.infoLabel = infoLabel;
-    [self addSubview:infoLabel];
-}
-
+// 布局子控件
 - (void)layoutSubviews {
     [super layoutSubviews];
     

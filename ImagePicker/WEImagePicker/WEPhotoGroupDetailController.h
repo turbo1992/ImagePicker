@@ -35,6 +35,7 @@
 @end
 
 
+// 相册图片cell
 @interface WEPhotoCell : UICollectionViewCell
 
 /**

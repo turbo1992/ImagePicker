@@ -12,8 +12,8 @@
 
 /*
  * 初始化图片是否可高度缩放,默认为NO
- * @YES:imageView高度为屏幕宽度,宽度缩放
- * @NO:根据imageSize计算缩放
+ * YES:imageView高度为屏幕宽度,宽度缩放
+ * NO:根据imageSize计算缩放
  */
 @property (nonatomic, assign) BOOL imageScaleEnable;
 

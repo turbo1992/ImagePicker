@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PictureView.h"
+#import "PhotoModel.h"
 
 typedef enum {
     PickerTypeShow, // 展示图片
@@ -28,7 +29,7 @@ typedef enum {
  *
  *  @param images 删除图片后返回剩余图片model数组
  */
-- (void)finishWithImages:(NSArray *)images;
+- (void)deleteImageFinish:(NSArray *)images;
 
 @end
 

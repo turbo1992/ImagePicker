@@ -29,10 +29,10 @@
 /**
  *  是否可以跨相册选择
  */
-@property (nonatomic, assign, getter=canMultiAlbumSelect) BOOL multiAlbumSelect;
+@property (nonatomic, assign, getter = canMultiAlbumSelect) BOOL multiAlbumSelect;
 
 /**
- *  相簿无照片提示
+ *  无法获取访问相册权限提示
  */
 - (void)showErrorMessageView;
 

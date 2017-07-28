@@ -76,5 +76,3 @@
 @property(nonatomic, assign, getter = isSelected) BOOL selected;
 
 @end
-
-#pragma clang diagnostic pop

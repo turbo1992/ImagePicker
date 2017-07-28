@@ -115,7 +115,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     CGSize size = [[UIScreen mainScreen] bounds].size;
-    self.scrollView = [[ImageScrollView alloc] initWithFrame:CGRectMake(0, 0, size.width+20, size.height)];
+    self.scrollView = [[ImageScrollView alloc] initWithFrame:CGRectMake(0, 0, size.width + 20, size.height)];
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.pagingEnabled = YES;
@@ -169,12 +169,12 @@
     titleLabel.textColor = [UIColor whiteColor];
     
     CGFloat x = 10.f;
-    CGFloat y = ScreenWidth+(ScreenHeight-ScreenWidth)/2+10.f;
+    CGFloat y = PBScreenWidth+(PBScreenHeight-PBScreenWidth)/2+10.f;
     if (self.textAligent == TextAlignmentTop) {
         y = 64.0f;
     }
-    CGFloat width = ScreenWidth-20.f;
-    CGFloat height = 20;
+    CGFloat width = PBScreenWidth - 20.f;
+    CGFloat height = 20.0f;
     titleLabel.frame = CGRectMake(x, y, width, height);
     
     [self.view addSubview:titleLabel];
@@ -184,12 +184,22 @@
 
 - (void)bottomView {
     
-    UIToolbar *bottomBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, ScreenHeight-44, ScreenWidth, 44)];
+    CGFloat x = 0;
+    CGFloat y = PBScreenHeight - 44.0f;
+    CGFloat width = PBScreenWidth;
+    CGFloat height = 44.0f;
+    
+    UIToolbar *bottomBar = [[UIToolbar alloc] initWithFrame:CGRectMake(x, y, width, height)];
     bottomBar.barStyle = UIBarStyleBlackTranslucent;
     bottomBar.alpha = 0.3f;
     [self.view addSubview:bottomBar];
     
-    pageLabel = [[UILabel alloc] initWithFrame:CGRectMake((ScreenWidth-120)*.5, 10, 120, 20)];
+    x = (PBScreenWidth-120)*.5;
+    y = 10;
+    width = 120;
+    height = 20;
+    
+    pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, y, width, height)];
     pageLabel.backgroundColor = [UIColor clearColor];
     pageLabel.textAlignment = NSTextAlignmentCenter;
     pageLabel.font = [UIFont systemFontOfSize:18];
@@ -253,13 +263,14 @@
 - (void)dismissView
 {
     if (isImageDeleted) {
-        if (_delegate && [_delegate respondsToSelector:@selector(finishWithImages:)] && self.type == PickerTypeDelete) {
-            [_delegate finishWithImages:_photoModels];
+        if (_delegate && [_delegate respondsToSelector:@selector(deleteImageFinish:)] && self.type == PickerTypeDelete) {
+            [_delegate deleteImageFinish:_photoModels];
         }
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+// 删除图片点击
 - (void)deleteEvent
 {
     
@@ -280,6 +291,7 @@
     
 }
 
+// 删除图片
 - (void)deleteImage {
     
     CGRect frame = [UIScreen mainScreen].bounds;
@@ -529,7 +541,7 @@
     if (!self.imageScaleEnable) {
         return;
     }
-    CGFloat height = [self calcTextHight:titleLabel.font text:titleLabel.text width:ScreenWidth-20.f];    CGRect tFrame = titleLabel.frame;
+    CGFloat height = [self calcTextHight:titleLabel.font text:titleLabel.text width:PBScreenWidth-20.f];    CGRect tFrame = titleLabel.frame;
     tFrame.size.height = height;
     titleLabel.frame = tFrame;
 }

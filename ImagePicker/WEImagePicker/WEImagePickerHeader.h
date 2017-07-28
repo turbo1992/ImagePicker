@@ -25,4 +25,6 @@ typedef void(^WEImagePicker_imageBlock)(UIImage *image);
 
 #define WERGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 
+#define PickerMainColor WERGBCOLOR(37, 124, 231) // Picker工程主色
+
 #endif /* WEImagePickerHeader_h */

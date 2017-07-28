@@ -10,6 +10,9 @@
 
 @interface PBGView : UIView
 
+/**
+ *  进度
+ */
 @property (nonatomic, assign) float progress;
 
 @end

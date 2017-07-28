@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShowPictureBrowerHeader.h"
 #import "UIImage+ReMake.h"
 #import "UIImageView+SD.h"
 #import "PBGView.h"

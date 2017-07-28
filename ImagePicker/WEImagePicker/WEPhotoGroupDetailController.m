@@ -8,7 +8,7 @@
 
 #import "WEPhotoGroupDetailController.h"
 
-static NSString * const reuseIdentifier = @"WEPhotoCell";
+static NSString * const cellIdentifier = @"WEPhotoCell";
 
 @interface WEPhotoGroupDetailController ()
 
@@ -19,9 +19,9 @@ static NSString * const reuseIdentifier = @"WEPhotoCell";
 /* 选中image数组 */
 @property(nonatomic, strong) NSMutableArray *imageArray;
 /* 展示已选图片数量 */
-@property (nonatomic, strong) UILabel *photoCountLab;
+@property(nonatomic, strong) UILabel *photoCountLab;
 /* 完成按钮 */
-@property (nonatomic, strong) UIButton *completeBtn;
+@property(nonatomic, strong) UIButton *completeBtn;
 
 @end
 
@@ -29,6 +29,7 @@ static NSString * const reuseIdentifier = @"WEPhotoCell";
 
 - (instancetype)init {
     
+    // 布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     CGFloat padding = WEImagePicker_Item_Padding;
     layout.sectionInset = UIEdgeInsetsMake(padding, padding, padding, padding);
@@ -38,15 +39,20 @@ static NSString * const reuseIdentifier = @"WEPhotoCell";
     return [super initWithCollectionViewLayout:layout];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+
+    // 当前相册名字
+    self.title = self.groupName;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.title = self.groupName;
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.allowsMultipleSelection = YES;
     self.collectionView.alwaysBounceVertical = YES;
-    [self.collectionView registerClass:[WEPhotoCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerClass:[WEPhotoCell class] forCellWithReuseIdentifier:cellIdentifier];
 
     CGRect frame = self.collectionView.frame;
     frame.size.height = WEScreenHeight - WETabBarHeight;
@@ -59,7 +65,7 @@ static NSString * const reuseIdentifier = @"WEPhotoCell";
     UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, WEScreenHeight - WETabBarHeight, WEScreenWidth, WETabBarHeight)];
     [bottomView addSubview:self.completeBtn];
     [bottomView addSubview:self.photoCountLab];
-    bottomView.backgroundColor = WERGBCOLOR(52, 156, 251);
+    bottomView.backgroundColor = PickerMainColor;
     [self.view addSubview:bottomView];
 }
 
@@ -78,6 +84,7 @@ static NSString * const reuseIdentifier = @"WEPhotoCell";
     }];
 }
 
+// 相册资源array
 - (void)setPhotoALAssets:(NSArray *)photoALAssets {
     _photoALAssets = photoALAssets;
     if (photoALAssets.count > 0)
@@ -93,7 +100,8 @@ static NSString * const reuseIdentifier = @"WEPhotoCell";
 
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
     return self.photoALAssets.count;
 }
 
@@ -107,7 +115,8 @@ static NSString * const reuseIdentifier = @"WEPhotoCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    WEPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    // 相册图片cell
+    WEPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     WEPhotoALAssets *photoALAssets = self.photoALAssets[self.photosCount - indexPath.row];
     cell.photoALAsset = photoALAssets;
     
@@ -115,7 +124,7 @@ static NSString * const reuseIdentifier = @"WEPhotoCell";
 }
 
 
-#pragma mark UICollectionViewDelegate
+#pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -139,37 +148,42 @@ static NSString * const reuseIdentifier = @"WEPhotoCell";
 }
 
 
-#pragma mark - completeAction
+// 完成按钮,回调已选图片数组,退出时置空
 - (void)completeAction {
     
     if (self.selectedPhotos.count == 0) return;
     
-    __weak typeof (self) selfVc = self;
+    __weak typeof (self) weakSelf = self;
     [[[NSOperationQueue alloc]init] addOperationWithBlock:^{
+        
         for (WEPhotoALAssets *photoALAsset in self.selectedPhotos) {
+            
             if (WEImagePicker_System_iOS8) {
-                [selfVc imageWithAsset:photoALAsset.photoAsset completion:^(UIImage *image) {
-                    [selfVc.imageArray addObject:image];
+                // iOS8系统以上从PHAsset中获取image
+                [weakSelf imageWithAsset:photoALAsset.photoAsset completion:^(UIImage *image) {
+                    [weakSelf.imageArray addObject:image];
                 }];
             }else {
-                ALAsset *sset = photoALAsset.photoALAsset;
-                ALAssetRepresentation *assetRepresentation = [sset defaultRepresentation];
+                // iOS8系统以下从ALAsset中获取image
+                ALAsset *asset = photoALAsset.photoALAsset;
+                ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
                 CGFloat imageScale = [assetRepresentation scale];
                 UIImageOrientation imageOrientation = (UIImageOrientation)[assetRepresentation orientation];
-                UIImage *originalImage = [UIImage imageWithCGImage:sset.defaultRepresentation.fullScreenImage scale:imageScale orientation:imageOrientation];
-                [selfVc.imageArray addObject:originalImage];
+                UIImage *originalImage = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage scale:imageScale orientation:imageOrientation];
+                [weakSelf.imageArray addObject:originalImage];
             }
         }
+        
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (selfVc.block) {
-                [selfVc dismissViewControllerAnimated:YES completion:^{
-                    selfVc.block(selfVc.imageArray);
-                    selfVc.selectedPhotos = nil;
-                    selfVc.imageArray = nil;
+            if (weakSelf.block) {
+                [weakSelf dismissViewControllerAnimated:YES completion:^{
+                    weakSelf.block(weakSelf.imageArray);
+                    weakSelf.selectedPhotos = nil;
+                    weakSelf.imageArray = nil;
                 }];
             }else {
-                selfVc.selectedPhotos = nil;
-                selfVc.imageArray = nil;
+                weakSelf.selectedPhotos = nil;
+                weakSelf.imageArray = nil;
             }
         });
     }];
@@ -214,6 +228,7 @@ static NSString * const reuseIdentifier = @"WEPhotoCell";
 @end
 
 
+// 相册图片cell
 @implementation WEPhotoCell
 
 - (void)setPhotoALAsset:(WEPhotoALAssets *)photoALAsset {
@@ -289,3 +304,5 @@ static NSString * const reuseIdentifier = @"WEPhotoCell";
 }
 
 @end
+
+#pragma clang diagnostic pop

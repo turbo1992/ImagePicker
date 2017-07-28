@@ -33,7 +33,7 @@ typedef enum {
 /**
  *  图片展示
  *
- *  @param photos 删除图片后返回剩余图片model数组
+ *  @param photos 图片model数组
  */
 - (void)showInView:(UIView *)view photos:(NSArray *)photos;
 

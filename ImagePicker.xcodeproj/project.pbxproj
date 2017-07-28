@@ -8,34 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		2725B0268DD6FD8BE5F55D20 /* libPods-ImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F18CEC8C336176ECF397EFE /* libPods-ImagePicker.a */; };
-		B50EFD4C1F219C5400555886 /* StytlePtotoShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50EFD4B1F219C5400555886 /* StytlePtotoShowView.m */; };
-		B51259D01F25E5C60003D804 /* WEPhotoLibrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51259CA1F25E5C60003D804 /* WEPhotoLibrayController.m */; };
-		B51259D11F25E5C60003D804 /* WEPhotoGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51259CC1F25E5C60003D804 /* WEPhotoGroupTableViewController.m */; };
-		B51259D21F25E5C60003D804 /* WEPhotoGroupDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51259CE1F25E5C60003D804 /* WEPhotoGroupDetailController.m */; };
-		B51259D31F25E5C60003D804 /* WEImagePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B51259CF1F25E5C60003D804 /* WEImagePicker.bundle */; };
+		B5E7CFF81F2B027A0060439E /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFCF1F2B027A0060439E /* ImageScrollView.m */; };
+		B5E7CFF91F2B027A0060439E /* PBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFD11F2B027A0060439E /* PBGView.m */; };
+		B5E7CFFA1F2B027A0060439E /* PhotoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFD31F2B027A0060439E /* PhotoImageView.m */; };
+		B5E7CFFB1F2B027A0060439E /* PhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFD51F2B027A0060439E /* PhotoItemView.m */; };
+		B5E7CFFC1F2B027A0060439E /* PhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFD71F2B027A0060439E /* PhotoModel.m */; };
+		B5E7CFFD1F2B027A0060439E /* PictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFD91F2B027A0060439E /* PictureView.m */; };
+		B5E7CFFE1F2B027A0060439E /* ShowPictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFDC1F2B027A0060439E /* ShowPictureController.m */; };
+		B5E7CFFF1F2B027A0060439E /* StytlePtotoShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFDE1F2B027A0060439E /* StytlePtotoShowView.m */; };
+		B5E7D0001F2B027A0060439E /* UIImage+ReMake.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFE21F2B027A0060439E /* UIImage+ReMake.m */; };
+		B5E7D0011F2B027A0060439E /* UIImageView+SD.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFE41F2B027A0060439E /* UIImageView+SD.m */; };
+		B5E7D0021F2B027A0060439E /* LFRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFE71F2B027A0060439E /* LFRoundProgressView.m */; };
+		B5E7D0031F2B027A0060439E /* PhotoLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFE91F2B027A0060439E /* PhotoLoadingView.m */; };
+		B5E7D0041F2B027A0060439E /* PhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFEB1F2B027A0060439E /* PhotoProgressView.m */; };
+		B5E7D0051F2B027A0060439E /* ShowPictureBrower.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B5E7CFEC1F2B027A0060439E /* ShowPictureBrower.bundle */; };
+		B5E7D0061F2B027A0060439E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFEE1F2B027A0060439E /* ViewController.m */; };
+		B5E7D0071F2B027A0060439E /* WEImagePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B5E7CFF01F2B027A0060439E /* WEImagePicker.bundle */; };
+		B5E7D0081F2B027A0060439E /* WEPhotoGroupDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFF31F2B027A0060439E /* WEPhotoGroupDetailController.m */; };
+		B5E7D0091F2B027A0060439E /* WEPhotoGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFF51F2B027A0060439E /* WEPhotoGroupTableViewController.m */; };
+		B5E7D00A1F2B027A0060439E /* WEPhotoLibrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E7CFF71F2B027A0060439E /* WEPhotoLibrayController.m */; };
 		B5EE0C7A1F1C64B600883B78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0C791F1C64B600883B78 /* main.m */; };
 		B5EE0C7D1F1C64B600883B78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0C7C1F1C64B600883B78 /* AppDelegate.m */; };
-		B5EE0C801F1C64B600883B78 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0C7F1F1C64B600883B78 /* ViewController.m */; };
 		B5EE0C831F1C64B600883B78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EE0C811F1C64B600883B78 /* Main.storyboard */; };
 		B5EE0C851F1C64B600883B78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5EE0C841F1C64B600883B78 /* Assets.xcassets */; };
 		B5EE0C881F1C64B600883B78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EE0C861F1C64B600883B78 /* LaunchScreen.storyboard */; };
 		B5EE0C931F1C64B600883B78 /* ImagePickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0C921F1C64B600883B78 /* ImagePickerTests.m */; };
 		B5EE0C9E1F1C64B600883B78 /* ImagePickerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0C9D1F1C64B600883B78 /* ImagePickerUITests.m */; };
-		B5EE0CDE1F1D9C1E00883B78 /* ShowPictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0CDD1F1D9C1E00883B78 /* ShowPictureController.m */; };
-		B5EE0D601F1DF2CE00883B78 /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D491F1DF2CE00883B78 /* ImageScrollView.m */; };
-		B5EE0D611F1DF2CE00883B78 /* PBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D4B1F1DF2CE00883B78 /* PBGView.m */; };
-		B5EE0D621F1DF2CE00883B78 /* PhotoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D4D1F1DF2CE00883B78 /* PhotoImageView.m */; };
-		B5EE0D631F1DF2CE00883B78 /* PhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D4F1F1DF2CE00883B78 /* PhotoItemView.m */; };
-		B5EE0D641F1DF2CE00883B78 /* PhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D511F1DF2CE00883B78 /* PhotoModel.m */; };
-		B5EE0D651F1DF2CE00883B78 /* PictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D531F1DF2CE00883B78 /* PictureView.m */; };
-		B5EE0D891F1DF35D00883B78 /* LFRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D7F1F1DF35D00883B78 /* LFRoundProgressView.m */; };
-		B5EE0D8A1F1DF35D00883B78 /* PhotoLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D811F1DF35D00883B78 /* PhotoLoadingView.m */; };
-		B5EE0D8B1F1DF35D00883B78 /* PhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D831F1DF35D00883B78 /* PhotoProgressView.m */; };
-		B5EE0D8C1F1DF35D00883B78 /* UIImage+ReMake.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D861F1DF35D00883B78 /* UIImage+ReMake.m */; };
-		B5EE0D8D1F1DF35D00883B78 /* UIImageView+SD.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D881F1DF35D00883B78 /* UIImageView+SD.m */; };
-		B5EE0D911F1F37EC00883B78 /* WEAssetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D901F1F37EC00883B78 /* WEAssetHelper.m */; };
-		B5EE0D941F1F38CD00883B78 /* WEImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D931F1F38CD00883B78 /* WEImagePickerController.m */; };
-		B5EE0D971F1F3BDC00883B78 /* WEImgPickerPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0D961F1F3BDC00883B78 /* WEImgPickerPhotoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,23 +56,49 @@
 /* Begin PBXFileReference section */
 		477893020F1FB999337CCC71 /* Pods-ImagePicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImagePicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImagePicker/Pods-ImagePicker.debug.xcconfig"; sourceTree = "<group>"; };
 		9F18CEC8C336176ECF397EFE /* libPods-ImagePicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ImagePicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B50EFD4A1F219C5400555886 /* StytlePtotoShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StytlePtotoShowView.h; sourceTree = "<group>"; };
-		B50EFD4B1F219C5400555886 /* StytlePtotoShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StytlePtotoShowView.m; sourceTree = "<group>"; };
 		B50EFD4E1F21F09000555886 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		B51259C81F25E5C60003D804 /* WEImagePickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEImagePickerHeader.h; sourceTree = "<group>"; };
-		B51259C91F25E5C60003D804 /* WEPhotoLibrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPhotoLibrayController.h; sourceTree = "<group>"; };
-		B51259CA1F25E5C60003D804 /* WEPhotoLibrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPhotoLibrayController.m; sourceTree = "<group>"; };
-		B51259CB1F25E5C60003D804 /* WEPhotoGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPhotoGroupTableViewController.h; sourceTree = "<group>"; };
-		B51259CC1F25E5C60003D804 /* WEPhotoGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPhotoGroupTableViewController.m; sourceTree = "<group>"; };
-		B51259CD1F25E5C60003D804 /* WEPhotoGroupDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPhotoGroupDetailController.h; sourceTree = "<group>"; };
-		B51259CE1F25E5C60003D804 /* WEPhotoGroupDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPhotoGroupDetailController.m; sourceTree = "<group>"; };
-		B51259CF1F25E5C60003D804 /* WEImagePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WEImagePicker.bundle; sourceTree = "<group>"; };
+		B5E7CFCE1F2B027A0060439E /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
+		B5E7CFCF1F2B027A0060439E /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
+		B5E7CFD01F2B027A0060439E /* PBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBGView.h; sourceTree = "<group>"; };
+		B5E7CFD11F2B027A0060439E /* PBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBGView.m; sourceTree = "<group>"; };
+		B5E7CFD21F2B027A0060439E /* PhotoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoImageView.h; sourceTree = "<group>"; };
+		B5E7CFD31F2B027A0060439E /* PhotoImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoImageView.m; sourceTree = "<group>"; };
+		B5E7CFD41F2B027A0060439E /* PhotoItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoItemView.h; sourceTree = "<group>"; };
+		B5E7CFD51F2B027A0060439E /* PhotoItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoItemView.m; sourceTree = "<group>"; };
+		B5E7CFD61F2B027A0060439E /* PhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoModel.h; sourceTree = "<group>"; };
+		B5E7CFD71F2B027A0060439E /* PhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoModel.m; sourceTree = "<group>"; };
+		B5E7CFD81F2B027A0060439E /* PictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureView.h; sourceTree = "<group>"; };
+		B5E7CFD91F2B027A0060439E /* PictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureView.m; sourceTree = "<group>"; };
+		B5E7CFDA1F2B027A0060439E /* ShowPictureBrowerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPictureBrowerHeader.h; sourceTree = "<group>"; };
+		B5E7CFDB1F2B027A0060439E /* ShowPictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPictureController.h; sourceTree = "<group>"; };
+		B5E7CFDC1F2B027A0060439E /* ShowPictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPictureController.m; sourceTree = "<group>"; };
+		B5E7CFDD1F2B027A0060439E /* StytlePtotoShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StytlePtotoShowView.h; sourceTree = "<group>"; };
+		B5E7CFDE1F2B027A0060439E /* StytlePtotoShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StytlePtotoShowView.m; sourceTree = "<group>"; };
+		B5E7CFE11F2B027A0060439E /* UIImage+ReMake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ReMake.h"; sourceTree = "<group>"; };
+		B5E7CFE21F2B027A0060439E /* UIImage+ReMake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ReMake.m"; sourceTree = "<group>"; };
+		B5E7CFE31F2B027A0060439E /* UIImageView+SD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SD.h"; sourceTree = "<group>"; };
+		B5E7CFE41F2B027A0060439E /* UIImageView+SD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SD.m"; sourceTree = "<group>"; };
+		B5E7CFE61F2B027A0060439E /* LFRoundProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRoundProgressView.h; sourceTree = "<group>"; };
+		B5E7CFE71F2B027A0060439E /* LFRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRoundProgressView.m; sourceTree = "<group>"; };
+		B5E7CFE81F2B027A0060439E /* PhotoLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLoadingView.h; sourceTree = "<group>"; };
+		B5E7CFE91F2B027A0060439E /* PhotoLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLoadingView.m; sourceTree = "<group>"; };
+		B5E7CFEA1F2B027A0060439E /* PhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoProgressView.h; sourceTree = "<group>"; };
+		B5E7CFEB1F2B027A0060439E /* PhotoProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoProgressView.m; sourceTree = "<group>"; };
+		B5E7CFEC1F2B027A0060439E /* ShowPictureBrower.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShowPictureBrower.bundle; sourceTree = "<group>"; };
+		B5E7CFED1F2B027A0060439E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B5E7CFEE1F2B027A0060439E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B5E7CFF01F2B027A0060439E /* WEImagePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WEImagePicker.bundle; sourceTree = "<group>"; };
+		B5E7CFF11F2B027A0060439E /* WEImagePickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEImagePickerHeader.h; sourceTree = "<group>"; };
+		B5E7CFF21F2B027A0060439E /* WEPhotoGroupDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPhotoGroupDetailController.h; sourceTree = "<group>"; };
+		B5E7CFF31F2B027A0060439E /* WEPhotoGroupDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPhotoGroupDetailController.m; sourceTree = "<group>"; };
+		B5E7CFF41F2B027A0060439E /* WEPhotoGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPhotoGroupTableViewController.h; sourceTree = "<group>"; };
+		B5E7CFF51F2B027A0060439E /* WEPhotoGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPhotoGroupTableViewController.m; sourceTree = "<group>"; };
+		B5E7CFF61F2B027A0060439E /* WEPhotoLibrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPhotoLibrayController.h; sourceTree = "<group>"; };
+		B5E7CFF71F2B027A0060439E /* WEPhotoLibrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPhotoLibrayController.m; sourceTree = "<group>"; };
 		B5EE0C751F1C64B600883B78 /* ImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EE0C791F1C64B600883B78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5EE0C7B1F1C64B600883B78 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B5EE0C7C1F1C64B600883B78 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B5EE0C7E1F1C64B600883B78 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B5EE0C7F1F1C64B600883B78 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B5EE0C821F1C64B600883B78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5EE0C841F1C64B600883B78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5EE0C871F1C64B600883B78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -85,37 +109,6 @@
 		B5EE0C991F1C64B600883B78 /* ImagePickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImagePickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EE0C9D1F1C64B600883B78 /* ImagePickerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImagePickerUITests.m; sourceTree = "<group>"; };
 		B5EE0C9F1F1C64B600883B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5EE0CDC1F1D9C1E00883B78 /* ShowPictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPictureController.h; sourceTree = "<group>"; };
-		B5EE0CDD1F1D9C1E00883B78 /* ShowPictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPictureController.m; sourceTree = "<group>"; };
-		B5EE0D021F1DA0AE00883B78 /* PrefixHeader_pch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader_pch.pch; sourceTree = "<group>"; };
-		B5EE0D481F1DF2CE00883B78 /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
-		B5EE0D491F1DF2CE00883B78 /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
-		B5EE0D4A1F1DF2CE00883B78 /* PBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBGView.h; sourceTree = "<group>"; };
-		B5EE0D4B1F1DF2CE00883B78 /* PBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBGView.m; sourceTree = "<group>"; };
-		B5EE0D4C1F1DF2CE00883B78 /* PhotoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoImageView.h; sourceTree = "<group>"; };
-		B5EE0D4D1F1DF2CE00883B78 /* PhotoImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoImageView.m; sourceTree = "<group>"; };
-		B5EE0D4E1F1DF2CE00883B78 /* PhotoItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoItemView.h; sourceTree = "<group>"; };
-		B5EE0D4F1F1DF2CE00883B78 /* PhotoItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoItemView.m; sourceTree = "<group>"; };
-		B5EE0D501F1DF2CE00883B78 /* PhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoModel.h; sourceTree = "<group>"; };
-		B5EE0D511F1DF2CE00883B78 /* PhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoModel.m; sourceTree = "<group>"; };
-		B5EE0D521F1DF2CE00883B78 /* PictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureView.h; sourceTree = "<group>"; };
-		B5EE0D531F1DF2CE00883B78 /* PictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureView.m; sourceTree = "<group>"; };
-		B5EE0D7E1F1DF35D00883B78 /* LFRoundProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRoundProgressView.h; sourceTree = "<group>"; };
-		B5EE0D7F1F1DF35D00883B78 /* LFRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRoundProgressView.m; sourceTree = "<group>"; };
-		B5EE0D801F1DF35D00883B78 /* PhotoLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLoadingView.h; sourceTree = "<group>"; };
-		B5EE0D811F1DF35D00883B78 /* PhotoLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLoadingView.m; sourceTree = "<group>"; };
-		B5EE0D821F1DF35D00883B78 /* PhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoProgressView.h; sourceTree = "<group>"; };
-		B5EE0D831F1DF35D00883B78 /* PhotoProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoProgressView.m; sourceTree = "<group>"; };
-		B5EE0D851F1DF35D00883B78 /* UIImage+ReMake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ReMake.h"; sourceTree = "<group>"; };
-		B5EE0D861F1DF35D00883B78 /* UIImage+ReMake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ReMake.m"; sourceTree = "<group>"; };
-		B5EE0D871F1DF35D00883B78 /* UIImageView+SD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SD.h"; sourceTree = "<group>"; };
-		B5EE0D881F1DF35D00883B78 /* UIImageView+SD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SD.m"; sourceTree = "<group>"; };
-		B5EE0D8F1F1F37EC00883B78 /* WEAssetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEAssetHelper.h; sourceTree = "<group>"; };
-		B5EE0D901F1F37EC00883B78 /* WEAssetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEAssetHelper.m; sourceTree = "<group>"; };
-		B5EE0D921F1F38CD00883B78 /* WEImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEImagePickerController.h; sourceTree = "<group>"; };
-		B5EE0D931F1F38CD00883B78 /* WEImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEImagePickerController.m; sourceTree = "<group>"; };
-		B5EE0D951F1F3BDC00883B78 /* WEImgPickerPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEImgPickerPhotoCell.h; sourceTree = "<group>"; };
-		B5EE0D961F1F3BDC00883B78 /* WEImgPickerPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEImgPickerPhotoCell.m; sourceTree = "<group>"; };
 		CF5502DCC1DCB7C508426B6E /* Pods-ImagePicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImagePicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImagePicker/Pods-ImagePicker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,17 +156,76 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B51259C71F25E5B10003D804 /* WEImagePicker */ = {
+		B5E7CFCD1F2B027A0060439E /* PhotoBrower */ = {
 			isa = PBXGroup;
 			children = (
-				B51259CF1F25E5C60003D804 /* WEImagePicker.bundle */,
-				B51259C81F25E5C60003D804 /* WEImagePickerHeader.h */,
-				B51259C91F25E5C60003D804 /* WEPhotoLibrayController.h */,
-				B51259CA1F25E5C60003D804 /* WEPhotoLibrayController.m */,
-				B51259CB1F25E5C60003D804 /* WEPhotoGroupTableViewController.h */,
-				B51259CC1F25E5C60003D804 /* WEPhotoGroupTableViewController.m */,
-				B51259CD1F25E5C60003D804 /* WEPhotoGroupDetailController.h */,
-				B51259CE1F25E5C60003D804 /* WEPhotoGroupDetailController.m */,
+				B5E7CFCE1F2B027A0060439E /* ImageScrollView.h */,
+				B5E7CFCF1F2B027A0060439E /* ImageScrollView.m */,
+				B5E7CFD01F2B027A0060439E /* PBGView.h */,
+				B5E7CFD11F2B027A0060439E /* PBGView.m */,
+				B5E7CFD21F2B027A0060439E /* PhotoImageView.h */,
+				B5E7CFD31F2B027A0060439E /* PhotoImageView.m */,
+				B5E7CFD41F2B027A0060439E /* PhotoItemView.h */,
+				B5E7CFD51F2B027A0060439E /* PhotoItemView.m */,
+				B5E7CFD61F2B027A0060439E /* PhotoModel.h */,
+				B5E7CFD71F2B027A0060439E /* PhotoModel.m */,
+				B5E7CFD81F2B027A0060439E /* PictureView.h */,
+				B5E7CFD91F2B027A0060439E /* PictureView.m */,
+				B5E7CFDA1F2B027A0060439E /* ShowPictureBrowerHeader.h */,
+				B5E7CFDB1F2B027A0060439E /* ShowPictureController.h */,
+				B5E7CFDC1F2B027A0060439E /* ShowPictureController.m */,
+				B5E7CFDD1F2B027A0060439E /* StytlePtotoShowView.h */,
+				B5E7CFDE1F2B027A0060439E /* StytlePtotoShowView.m */,
+				B5E7CFDF1F2B027A0060439E /* utils */,
+			);
+			path = PhotoBrower;
+			sourceTree = "<group>";
+		};
+		B5E7CFDF1F2B027A0060439E /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				B5E7CFE01F2B027A0060439E /* imageremake */,
+				B5E7CFE51F2B027A0060439E /* progress */,
+				B5E7CFEC1F2B027A0060439E /* ShowPictureBrower.bundle */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		B5E7CFE01F2B027A0060439E /* imageremake */ = {
+			isa = PBXGroup;
+			children = (
+				B5E7CFE11F2B027A0060439E /* UIImage+ReMake.h */,
+				B5E7CFE21F2B027A0060439E /* UIImage+ReMake.m */,
+				B5E7CFE31F2B027A0060439E /* UIImageView+SD.h */,
+				B5E7CFE41F2B027A0060439E /* UIImageView+SD.m */,
+			);
+			path = imageremake;
+			sourceTree = "<group>";
+		};
+		B5E7CFE51F2B027A0060439E /* progress */ = {
+			isa = PBXGroup;
+			children = (
+				B5E7CFE61F2B027A0060439E /* LFRoundProgressView.h */,
+				B5E7CFE71F2B027A0060439E /* LFRoundProgressView.m */,
+				B5E7CFE81F2B027A0060439E /* PhotoLoadingView.h */,
+				B5E7CFE91F2B027A0060439E /* PhotoLoadingView.m */,
+				B5E7CFEA1F2B027A0060439E /* PhotoProgressView.h */,
+				B5E7CFEB1F2B027A0060439E /* PhotoProgressView.m */,
+			);
+			path = progress;
+			sourceTree = "<group>";
+		};
+		B5E7CFEF1F2B027A0060439E /* WEImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B5E7CFF01F2B027A0060439E /* WEImagePicker.bundle */,
+				B5E7CFF11F2B027A0060439E /* WEImagePickerHeader.h */,
+				B5E7CFF21F2B027A0060439E /* WEPhotoGroupDetailController.h */,
+				B5E7CFF31F2B027A0060439E /* WEPhotoGroupDetailController.m */,
+				B5E7CFF41F2B027A0060439E /* WEPhotoGroupTableViewController.h */,
+				B5E7CFF51F2B027A0060439E /* WEPhotoGroupTableViewController.m */,
+				B5E7CFF61F2B027A0060439E /* WEPhotoLibrayController.h */,
+				B5E7CFF71F2B027A0060439E /* WEPhotoLibrayController.m */,
 			);
 			path = WEImagePicker;
 			sourceTree = "<group>";
@@ -203,13 +255,12 @@
 		B5EE0C771F1C64B600883B78 /* ImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				B51259C71F25E5B10003D804 /* WEImagePicker */,
-				B5EE0CD81F1C98FD00883B78 /* PhotoBrower */,
-				B5EE0D8E1F1F37BF00883B78 /* WEProImagePicker */,
 				B5EE0C7B1F1C64B600883B78 /* AppDelegate.h */,
 				B5EE0C7C1F1C64B600883B78 /* AppDelegate.m */,
-				B5EE0C7E1F1C64B600883B78 /* ViewController.h */,
-				B5EE0C7F1F1C64B600883B78 /* ViewController.m */,
+				B5E7CFEF1F2B027A0060439E /* WEImagePicker */,
+				B5E7CFCD1F2B027A0060439E /* PhotoBrower */,
+				B5E7CFED1F2B027A0060439E /* ViewController.h */,
+				B5E7CFEE1F2B027A0060439E /* ViewController.m */,
 				B5EE0C811F1C64B600883B78 /* Main.storyboard */,
 				B5EE0C841F1C64B600883B78 /* Assets.xcassets */,
 				B5EE0C861F1C64B600883B78 /* LaunchScreen.storyboard */,
@@ -223,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				B5EE0C791F1C64B600883B78 /* main.m */,
-				B5EE0D021F1DA0AE00883B78 /* PrefixHeader_pch.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -244,76 +294,6 @@
 				B5EE0C9F1F1C64B600883B78 /* Info.plist */,
 			);
 			path = ImagePickerUITests;
-			sourceTree = "<group>";
-		};
-		B5EE0CD81F1C98FD00883B78 /* PhotoBrower */ = {
-			isa = PBXGroup;
-			children = (
-				B5EE0CDC1F1D9C1E00883B78 /* ShowPictureController.h */,
-				B5EE0CDD1F1D9C1E00883B78 /* ShowPictureController.m */,
-				B5EE0D501F1DF2CE00883B78 /* PhotoModel.h */,
-				B5EE0D511F1DF2CE00883B78 /* PhotoModel.m */,
-				B5EE0D481F1DF2CE00883B78 /* ImageScrollView.h */,
-				B5EE0D491F1DF2CE00883B78 /* ImageScrollView.m */,
-				B5EE0D4E1F1DF2CE00883B78 /* PhotoItemView.h */,
-				B5EE0D4F1F1DF2CE00883B78 /* PhotoItemView.m */,
-				B5EE0D4C1F1DF2CE00883B78 /* PhotoImageView.h */,
-				B5EE0D4D1F1DF2CE00883B78 /* PhotoImageView.m */,
-				B5EE0D521F1DF2CE00883B78 /* PictureView.h */,
-				B5EE0D531F1DF2CE00883B78 /* PictureView.m */,
-				B5EE0D4A1F1DF2CE00883B78 /* PBGView.h */,
-				B5EE0D4B1F1DF2CE00883B78 /* PBGView.m */,
-				B50EFD4A1F219C5400555886 /* StytlePtotoShowView.h */,
-				B50EFD4B1F219C5400555886 /* StytlePtotoShowView.m */,
-				B5EE0D7C1F1DF35D00883B78 /* Category */,
-			);
-			path = PhotoBrower;
-			sourceTree = "<group>";
-		};
-		B5EE0D7C1F1DF35D00883B78 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				B5EE0D7D1F1DF35D00883B78 /* ProgressView */,
-				B5EE0D841F1DF35D00883B78 /* UIImage_Remake */,
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
-		B5EE0D7D1F1DF35D00883B78 /* ProgressView */ = {
-			isa = PBXGroup;
-			children = (
-				B5EE0D7E1F1DF35D00883B78 /* LFRoundProgressView.h */,
-				B5EE0D7F1F1DF35D00883B78 /* LFRoundProgressView.m */,
-				B5EE0D801F1DF35D00883B78 /* PhotoLoadingView.h */,
-				B5EE0D811F1DF35D00883B78 /* PhotoLoadingView.m */,
-				B5EE0D821F1DF35D00883B78 /* PhotoProgressView.h */,
-				B5EE0D831F1DF35D00883B78 /* PhotoProgressView.m */,
-			);
-			path = ProgressView;
-			sourceTree = "<group>";
-		};
-		B5EE0D841F1DF35D00883B78 /* UIImage_Remake */ = {
-			isa = PBXGroup;
-			children = (
-				B5EE0D851F1DF35D00883B78 /* UIImage+ReMake.h */,
-				B5EE0D861F1DF35D00883B78 /* UIImage+ReMake.m */,
-				B5EE0D871F1DF35D00883B78 /* UIImageView+SD.h */,
-				B5EE0D881F1DF35D00883B78 /* UIImageView+SD.m */,
-			);
-			path = UIImage_Remake;
-			sourceTree = "<group>";
-		};
-		B5EE0D8E1F1F37BF00883B78 /* WEProImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-				B5EE0D8F1F1F37EC00883B78 /* WEAssetHelper.h */,
-				B5EE0D901F1F37EC00883B78 /* WEAssetHelper.m */,
-				B5EE0D921F1F38CD00883B78 /* WEImagePickerController.h */,
-				B5EE0D931F1F38CD00883B78 /* WEImagePickerController.m */,
-				B5EE0D951F1F3BDC00883B78 /* WEImgPickerPhotoCell.h */,
-				B5EE0D961F1F3BDC00883B78 /* WEImgPickerPhotoCell.m */,
-			);
-			path = WEProImagePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,8 +407,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5EE0C881F1C64B600883B78 /* LaunchScreen.storyboard in Resources */,
-				B51259D31F25E5C60003D804 /* WEImagePicker.bundle in Resources */,
 				B5EE0C851F1C64B600883B78 /* Assets.xcassets in Resources */,
+				B5E7D0071F2B027A0060439E /* WEImagePicker.bundle in Resources */,
+				B5E7D0051F2B027A0060439E /* ShowPictureBrower.bundle in Resources */,
 				B5EE0C831F1C64B600883B78 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,28 +483,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5EE0D8C1F1DF35D00883B78 /* UIImage+ReMake.m in Sources */,
-				B5EE0D611F1DF2CE00883B78 /* PBGView.m in Sources */,
-				B5EE0D631F1DF2CE00883B78 /* PhotoItemView.m in Sources */,
-				B51259D11F25E5C60003D804 /* WEPhotoGroupTableViewController.m in Sources */,
-				B5EE0D641F1DF2CE00883B78 /* PhotoModel.m in Sources */,
-				B5EE0D601F1DF2CE00883B78 /* ImageScrollView.m in Sources */,
-				B5EE0D8A1F1DF35D00883B78 /* PhotoLoadingView.m in Sources */,
-				B5EE0D911F1F37EC00883B78 /* WEAssetHelper.m in Sources */,
-				B50EFD4C1F219C5400555886 /* StytlePtotoShowView.m in Sources */,
-				B5EE0C801F1C64B600883B78 /* ViewController.m in Sources */,
-				B5EE0D8B1F1DF35D00883B78 /* PhotoProgressView.m in Sources */,
+				B5E7D0031F2B027A0060439E /* PhotoLoadingView.m in Sources */,
+				B5E7CFF91F2B027A0060439E /* PBGView.m in Sources */,
+				B5E7D0011F2B027A0060439E /* UIImageView+SD.m in Sources */,
+				B5E7CFFC1F2B027A0060439E /* PhotoModel.m in Sources */,
+				B5E7CFF81F2B027A0060439E /* ImageScrollView.m in Sources */,
+				B5E7CFFF1F2B027A0060439E /* StytlePtotoShowView.m in Sources */,
+				B5E7CFFB1F2B027A0060439E /* PhotoItemView.m in Sources */,
+				B5E7D0001F2B027A0060439E /* UIImage+ReMake.m in Sources */,
+				B5E7D0091F2B027A0060439E /* WEPhotoGroupTableViewController.m in Sources */,
 				B5EE0C7D1F1C64B600883B78 /* AppDelegate.m in Sources */,
-				B5EE0D971F1F3BDC00883B78 /* WEImgPickerPhotoCell.m in Sources */,
-				B5EE0D891F1DF35D00883B78 /* LFRoundProgressView.m in Sources */,
-				B5EE0D651F1DF2CE00883B78 /* PictureView.m in Sources */,
-				B5EE0D8D1F1DF35D00883B78 /* UIImageView+SD.m in Sources */,
 				B5EE0C7A1F1C64B600883B78 /* main.m in Sources */,
-				B5EE0D621F1DF2CE00883B78 /* PhotoImageView.m in Sources */,
-				B51259D01F25E5C60003D804 /* WEPhotoLibrayController.m in Sources */,
-				B5EE0CDE1F1D9C1E00883B78 /* ShowPictureController.m in Sources */,
-				B5EE0D941F1F38CD00883B78 /* WEImagePickerController.m in Sources */,
-				B51259D21F25E5C60003D804 /* WEPhotoGroupDetailController.m in Sources */,
+				B5E7D0061F2B027A0060439E /* ViewController.m in Sources */,
+				B5E7D00A1F2B027A0060439E /* WEPhotoLibrayController.m in Sources */,
+				B5E7CFFE1F2B027A0060439E /* ShowPictureController.m in Sources */,
+				B5E7D0041F2B027A0060439E /* PhotoProgressView.m in Sources */,
+				B5E7CFFA1F2B027A0060439E /* PhotoImageView.m in Sources */,
+				B5E7CFFD1F2B027A0060439E /* PictureView.m in Sources */,
+				B5E7D0021F2B027A0060439E /* LFRoundProgressView.m in Sources */,
+				B5E7D0081F2B027A0060439E /* WEPhotoGroupDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,8 +654,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FMCAQ83588;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ImagePicker/PrefixHeader_pch.pch;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = ImagePicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Turbo.ImagePicker;
@@ -691,8 +669,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FMCAQ83588;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ImagePicker/PrefixHeader_pch.pch;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = ImagePicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Turbo.ImagePicker;
